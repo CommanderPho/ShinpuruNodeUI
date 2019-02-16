@@ -21,9 +21,9 @@
 import UIKit
 
 
-class SNNodeWidget: UIView
+open class SNNodeWidget: UIView
 {
-    static let titleBarHeight: CGFloat = 44
+    static public let titleBarHeight: CGFloat = 44
     
     unowned let view: SNView
     unowned let node: SNNode
@@ -32,7 +32,7 @@ class SNNodeWidget: UIView
     
     let titleBar = SNWidgetTitleBar()
     
-    required init(view: SNView, node: SNNode)
+    public required init(view: SNView, node: SNNode)
     {
         self.view = view
         self.node = node
@@ -53,7 +53,7 @@ class SNNodeWidget: UIView
         alpha = 0
     }
     
-    override func didMoveToSuperview()
+    open override func didMoveToSuperview()
     {
         if superview != nil
         {
@@ -62,14 +62,14 @@ class SNNodeWidget: UIView
         }
     }
     
-    override func removeFromSuperview()
+    open override func removeFromSuperview()
     {
         UIView.animate(withDuration: SNViewAnimationDuration,
             animations: {self.alpha = 0},
             completion: {(_) in super.removeFromSuperview()})
     }
 
-    required init?(coder aDecoder: NSCoder)
+    public required init?(coder aDecoder: NSCoder)
     {
         fatalError("init(coder:) has not been implemented")
     }
@@ -185,14 +185,14 @@ class SNNodeWidget: UIView
             height: itemRenderer.intrinsicContentSize.height + inputOutputRowsHeight)
     }
     
-    override func layoutSubviews()
+    override open func layoutSubviews()
     {
         super.layoutSubviews()
         
         buildUserInterface()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         self.superview?.bringSubview(toFront: self)
         
@@ -251,7 +251,7 @@ class SNNodeWidget: UIView
         }
     }
     
-    override var intrinsicContentSize : CGSize
+    override open var intrinsicContentSize : CGSize
     {
         return CGSize(width: frame.width, height: frame.height)
     }

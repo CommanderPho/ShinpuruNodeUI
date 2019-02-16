@@ -19,6 +19,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import UIKit
+import ShinpuruNodeUI
 
 struct DemoModel
 {
@@ -32,8 +33,8 @@ struct DemoModel
         
         nodes = [one, two, add]
         
-        updateDescendantNodes(one)
-        updateDescendantNodes(two)
+        let _ = updateDescendantNodes(one)
+        let _ = updateDescendantNodes(two)
     }
     
     mutating func toggleRelationship(_ sourceNode: DemoNode, targetNode: DemoNode, targetIndex: Int) -> [DemoNode]

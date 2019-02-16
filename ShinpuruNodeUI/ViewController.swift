@@ -27,6 +27,7 @@
 */
 
 import UIKit
+import ShinpuruNodeUI
 
 class ViewController: UIViewController
 {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+public func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     switch (lhs, rhs) {
     case let (l?, r?):
         return l < r
@@ -19,7 +19,7 @@ func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     }
 }
 
-func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+public func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     switch (lhs, rhs) {
     case let (l?, r?):
         return l >= r

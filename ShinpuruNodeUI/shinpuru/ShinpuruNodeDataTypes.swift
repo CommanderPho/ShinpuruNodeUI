@@ -22,27 +22,27 @@ import UIKit
 
 /// Node value object
 
-class SNNode: Equatable, Hashable
+open class SNNode: Equatable, Hashable
 {
     let uuid  = UUID()
     
-    var numInputSlots: Int = 0
-    var inputs: [SNNode?]?
+    open var numInputSlots: Int = 0
+    open var inputs: [SNNode?]?
     var position: CGPoint
-    var name: String
+    public var name: String
     
-    required init(name: String, position: CGPoint)
+    public required init(name: String, position: CGPoint)
     {
         self.name = name
         self.position = position
     }
     
-    var hashValue: Int
+    public var hashValue: Int
     {
         return uuid.hashValue
     }
     
-    func isAscendant(_ node: SNNode) -> Bool // TO DO test long chain
+    public func isAscendant(_ node: SNNode) -> Bool // TO DO test long chain
     {
         guard let inputs = inputs else
         {
@@ -65,7 +65,7 @@ class SNNode: Equatable, Hashable
     }
 }
 
-func == (lhs: SNNode, rhs: SNNode) -> Bool
+public func == (lhs: SNNode, rhs: SNNode) -> Bool
 {
     return (lhs.uuid == rhs.uuid)
 }
@@ -91,7 +91,7 @@ func == (lhs: SNNodePair, rhs: SNNodePair) -> Bool
 
 /// SNView delegate protocol
 
-protocol SNDelegate: NSObjectProtocol
+public protocol SNDelegate: NSObjectProtocol
 {
     func dataProviderForView(_ view: SNView) -> [SNNode]?
     
@@ -118,23 +118,23 @@ protocol SNDelegate: NSObjectProtocol
 
 /// Base class for node item renderer
 
-class SNItemRenderer: UIView
+open class SNItemRenderer: UIView
 {
-    weak var node: SNNode?
+    open weak var node: SNNode?
     
-    required init(node: SNNode)
+    required public init(node: SNNode)
     {
         self.node = node
         
         super.init(frame: .zero)
     }
     
-    required init?(coder aDecoder: NSCoder)
+    required public init?(coder aDecoder: NSCoder)
     {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func reload()
+    open func reload()
     {
         fatalError("reload() has not been implemented")
     }
@@ -142,23 +142,23 @@ class SNItemRenderer: UIView
 
 /// Base class for output row renderer
 
-class SNOutputRowRenderer: UIView
+open class SNOutputRowRenderer: UIView
 {
-    weak var node: SNNode?
+    public weak var node: SNNode?
     
-    required init(node: SNNode)
+    public required init(node: SNNode)
     {
         self.node = node
         
         super.init(frame: .zero)
     }
     
-    func reload()
+    open func reload()
     {
         fatalError("reload() has not been implemented")
     }
     
-    required init?(coder aDecoder: NSCoder)
+    public required init?(coder aDecoder: NSCoder)
     {
         fatalError("init(coder:) has not been implemented")
     }
@@ -166,14 +166,14 @@ class SNOutputRowRenderer: UIView
 
 /// Base class for input row renderer
 
-class SNInputRowRenderer: UIView
+open class SNInputRowRenderer: UIView
 {
-    var index: Int
+    public var index: Int
     
-    unowned let parentNode: SNNode
-    weak var inputNode: SNNode?
+    public unowned let parentNode: SNNode
+    open weak var inputNode: SNNode?
     
-    required init(index: Int, inputNode: SNNode?, parentNode: SNNode)
+    required public init(index: Int, inputNode: SNNode?, parentNode: SNNode)
     {
         self.index = index
         self.inputNode = inputNode
@@ -182,17 +182,17 @@ class SNInputRowRenderer: UIView
         super.init(frame: .zero)
     }
 
-    func reload()
+    open func reload()
     {
         fatalError("reload() has not been implemented")
     }
     
-    required init?(coder aDecoder: NSCoder)
+    required public init?(coder aDecoder: NSCoder)
     {
         fatalError("init(coder:) has not been implemented")
     }
 
-    required init(node: SNNode)
+    required public init(node: SNNode)
     {
         fatalError("init(node:) has not been implemented")
     }

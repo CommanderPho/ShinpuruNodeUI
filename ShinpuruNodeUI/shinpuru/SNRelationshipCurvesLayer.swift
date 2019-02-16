@@ -20,7 +20,7 @@
 
 import UIKit
 
-class SNRelationshipCurvesLayer: CALayer
+public class SNRelationshipCurvesLayer: CALayer
 {
     var relationshipLayersDictionary = [SNNodePair: CAShapeLayer]()
     
@@ -46,7 +46,7 @@ class SNRelationshipCurvesLayer: CALayer
         }
     }
     
-    func renderRelationships(_ nodes: [SNNode], widgetsDictionary: [SNNode: SNNodeWidget], focussedNode: SNNode? = nil)
+    public func renderRelationships(_ nodes: [SNNode], widgetsDictionary: [SNNode: SNNodeWidget], focussedNode: SNNode? = nil)
     {
         drawsAsynchronously = true
         

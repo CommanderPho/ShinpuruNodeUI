@@ -23,7 +23,7 @@ import UIKit
 
 let SNViewAnimationDuration = 0.2
 
-class SNView: UIScrollView, UIScrollViewDelegate
+public class SNView: UIScrollView, UIScrollViewDelegate
 {
     fileprivate var widgetsDictionary = [SNNode: SNNodeWidget]()
     fileprivate let curvesLayer = SNRelationshipCurvesLayer()
@@ -34,7 +34,7 @@ class SNView: UIScrollView, UIScrollViewDelegate
         return nodeDelegate?.dataProviderForView(self)
     }
     
-    weak var nodeDelegate: SNDelegate?
+    public weak var nodeDelegate: SNDelegate?
     {
         didSet
         {
@@ -71,7 +71,7 @@ class SNView: UIScrollView, UIScrollViewDelegate
         }
     }
     
-    var selectedNode: SNNode?
+    public var selectedNode: SNNode?
     {
         didSet
         {
@@ -95,7 +95,7 @@ class SNView: UIScrollView, UIScrollViewDelegate
         }
     }
     
-    override func didMoveToSuperview()
+    override public func didMoveToSuperview()
     {
         minimumZoomScale = 0.5
         maximumZoomScale = 2.0
@@ -113,7 +113,7 @@ class SNView: UIScrollView, UIScrollViewDelegate
         nodesContainer.addGestureRecognizer(longPress)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         super.touchesBegan(touches, with: event)
         
@@ -132,7 +132,7 @@ class SNView: UIScrollView, UIScrollViewDelegate
         }
     }
     
-    func reloadNode(_ node: SNNode)
+    public func reloadNode(_ node: SNNode)
     {
         let widget = createWidgetForNode(node)
         
@@ -208,7 +208,7 @@ class SNView: UIScrollView, UIScrollViewDelegate
         
         for node in nodes
         {
-            createWidgetForNode(node)
+            let _ = createWidgetForNode(node)
         }
         
         renderRelationships()
@@ -279,18 +279,18 @@ class SNView: UIScrollView, UIScrollViewDelegate
         }
     }
     
-    func renderRelationships(inputsChangedNodes: SNNode)
+    public func renderRelationships(inputsChangedNodes: SNNode)
     {
         renderRelationships(deletedNode: inputsChangedNodes)
         renderRelationships(focussedNode: inputsChangedNodes)
     }
     
-    func renderRelationships(deletedNode: SNNode)
+    public func renderRelationships(deletedNode: SNNode)
     {
         curvesLayer.deleteNodeRelationships(deletedNode)
     }
     
-    func renderRelationships(focussedNode: SNNode? = nil)
+    public func renderRelationships(focussedNode: SNNode? = nil)
     {
         if let nodes = nodes
         {
@@ -298,12 +298,12 @@ class SNView: UIScrollView, UIScrollViewDelegate
         }
     }
     
-    func viewForZooming(in scrollView: UIScrollView) -> UIView?
+    public func viewForZooming(in scrollView: UIScrollView) -> UIView?
     {
         return nodesContainer
     }
     
-    override func layoutSubviews()
+    override public func layoutSubviews()
     {
         super.layoutSubviews()
         
