@@ -37,9 +37,9 @@ class SNNode: Equatable, Hashable
         self.position = position
     }
     
-    var hashValue: Int
+    func hash(into hasher: inout Hasher)
     {
-        return uuid.hashValue
+        hasher.combine(uuid)
     }
     
     func isAscendant(_ node: SNNode) -> Bool // TO DO test long chain
@@ -78,9 +78,11 @@ struct SNNodePair: Equatable, Hashable
     let targetNode: SNNode
     let targetIndex: Int
     
-    var hashValue: Int
+    func hash(into hasher: inout Hasher)
     {
-        return sourceNode.uuid.hashValue + targetNode.uuid.hashValue + targetIndex.hashValue
+        hasher.combine(sourceNode.uuid)
+        hasher.combine(targetNode.uuid)
+        hasher.combine(targetIndex)
     }
 }
 
