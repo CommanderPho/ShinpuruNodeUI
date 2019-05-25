@@ -198,7 +198,7 @@ class SNNodeWidget: UIView
         
         if let touchLocation = touches.first?.location(in: self),
             let inputNodeWidget = self.hitTest(touchLocation, with: event) as? SNInputRowRenderer,
-            let targetNodeInputIndex = inputRowRenderers.index(of: inputNodeWidget)
+            let targetNodeInputIndex = inputRowRenderers.firstIndex(of: inputNodeWidget)
         {
             view.toggleRelationship(targetNode: node, targetNodeInputIndex: targetNodeInputIndex)
         }

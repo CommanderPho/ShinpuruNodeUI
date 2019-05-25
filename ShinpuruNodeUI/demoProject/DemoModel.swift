@@ -81,7 +81,7 @@ struct DemoModel
             }
         }
         
-        if let deletedNodeIndex = nodes.index(of: deletedNode)
+        if let deletedNodeIndex = nodes.firstIndex(of: deletedNode)
         {
             nodes.remove(at: deletedNodeIndex)
         }

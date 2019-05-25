@@ -204,7 +204,7 @@ extension ViewController: SNDelegate
             operatorsControl.isEnabled = true
             isOperatorSwitch.isOn = true
             
-            if let targetIndex = DemoNodeType.operators.index(of: DemoNodeType(rawValue: node.type.rawValue)!)
+            if let targetIndex = DemoNodeType.operators.firstIndex(of: DemoNodeType(rawValue: node.type.rawValue)!)
             {
                 operatorsControl.selectedSegmentIndex = targetIndex
             }
