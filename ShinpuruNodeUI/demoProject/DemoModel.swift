@@ -32,8 +32,8 @@ struct DemoModel
         
         nodes = [one, two, add]
         
-        updateDescendantNodes(one)
-        updateDescendantNodes(two)
+        _ = updateDescendantNodes(one)
+        _ = updateDescendantNodes(two)
     }
     
     mutating func toggleRelationship(_ sourceNode: DemoNode, targetNode: DemoNode, targetIndex: Int) -> [DemoNode]

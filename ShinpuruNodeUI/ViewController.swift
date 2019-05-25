@@ -69,16 +69,16 @@ class ViewController: UIViewController
         slider.tintColor = .white
         slider.isEnabled = false
         
-        slider.addTarget(self, action: #selector(ViewController.sliderChangeHandler), for: UIControlEvents.valueChanged)
+        slider.addTarget(self, action: #selector(ViewController.sliderChangeHandler), for: UIControl.Event.valueChanged)
         
         // operators segmented control
         operatorsControl.isEnabled = false
         operatorsControl.tintColor = .white
-        operatorsControl.addTarget(self, action: #selector(ViewController.operatorsControlChangeHandler), for: UIControlEvents.valueChanged)
+        operatorsControl.addTarget(self, action: #selector(ViewController.operatorsControlChangeHandler), for: UIControl.Event.valueChanged)
         
         // isOperatorSwitch
         isOperatorSwitch.isEnabled = false
-        isOperatorSwitch.addTarget(self, action: #selector(ViewController.isOperatorSwitchChangeHandler), for: UIControlEvents.valueChanged)
+        isOperatorSwitch.addTarget(self, action: #selector(ViewController.isOperatorSwitchChangeHandler), for: UIControl.Event.valueChanged)
         
         // toolbar stack view
         controlsStackView.distribution = .fill
@@ -95,7 +95,7 @@ class ViewController: UIViewController
     
     // MARK: UI control change handlers
     
-    func operatorsControlChangeHandler()
+    @objc func operatorsControlChangeHandler()
     {
         if let selectedNode = shinpuruNodeUI.selectedNode?.demoNode , selectedNode.type.isOperator
         {
@@ -108,7 +108,7 @@ class ViewController: UIViewController
         }
     }
     
-    func sliderChangeHandler()
+    @objc func sliderChangeHandler()
     {
         if let selectedNode = shinpuruNodeUI.selectedNode?.demoNode , selectedNode.type == .Numeric
         {
@@ -118,7 +118,7 @@ class ViewController: UIViewController
         }
     }
     
-    func isOperatorSwitchChangeHandler()
+    @objc func isOperatorSwitchChangeHandler()
     {
         if let selectedNode = shinpuruNodeUI.selectedNode?.demoNode 
         {

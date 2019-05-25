@@ -194,7 +194,7 @@ class SNNodeWidget: UIView
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
-        self.superview?.bringSubview(toFront: self)
+        self.superview?.bringSubviewToFront(self)
         
         if let touchLocation = touches.first?.location(in: self),
             let inputNodeWidget = self.hitTest(touchLocation, with: event) as? SNInputRowRenderer,
@@ -208,12 +208,12 @@ class SNNodeWidget: UIView
         }
     }
     
-    func deleteHandler()
+    @objc func deleteHandler()
     {
         view.nodeDeleted(node)
     }
     
-    func longPressHandler(_ recognizer: UILongPressGestureRecognizer)
+    @objc func longPressHandler(_ recognizer: UILongPressGestureRecognizer)
     {
         if recognizer.state == .began
         {
@@ -221,17 +221,17 @@ class SNNodeWidget: UIView
         }
     }
     
-    func panHandler(_ recognizer: UIPanGestureRecognizer)
+    @objc func panHandler(_ recognizer: UIPanGestureRecognizer)
     {
         if recognizer.state == .began
         {
             previousPanPoint = recognizer.location(in: self.superview)
             
-            self.superview?.bringSubview(toFront: self)
+            self.superview?.bringSubviewToFront(self)
             
             view.selectedNode = node
         }
-        else if let previousPanPoint = previousPanPoint , recognizer.state == UIGestureRecognizerState.changed
+        else if let previousPanPoint = previousPanPoint , recognizer.state == UIGestureRecognizer.State.changed
         {
             let gestureLocation = recognizer.location(in: self.superview)
             
@@ -286,7 +286,7 @@ class SNWidgetTitleBar: UIToolbar
         barTintColor = .darkGray
     }
 
-    func deleteHandler()
+    @objc func deleteHandler()
     {
         parentNodeWidget?.deleteHandler()
     }
