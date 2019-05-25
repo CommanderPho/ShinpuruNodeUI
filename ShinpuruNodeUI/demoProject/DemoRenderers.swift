@@ -208,7 +208,7 @@ class DemoRenderer: SNItemRenderer
             switch value
             {
             case DemoNodeValue.number(let floatValue):
-                label.text = "\(type) \n\(floatValue)"
+                label.text = "\(type) \n\(floatValue ?? 0)"
                 backgroundColor = type.isOperator ? .blue : .red
                 colorSwatch.alpha = 0
                 label.frame = bounds

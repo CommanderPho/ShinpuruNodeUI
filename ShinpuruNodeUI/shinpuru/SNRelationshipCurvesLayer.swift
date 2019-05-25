@@ -146,7 +146,7 @@ class SNRelationshipCurvesLayer: CALayer
             layer.strokeColor = UIColor.white.cgColor
             layer.lineWidth = 4
             layer.fillColor = nil
-            layer.lineCap = kCALineCapSquare
+            layer.lineCap = CAShapeLayerLineCap.square
             
             layer.shadowColor = UIColor.black.cgColor
             layer.shadowOffset = .zero

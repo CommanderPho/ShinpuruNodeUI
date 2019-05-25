@@ -120,7 +120,7 @@ class SNView: UIScrollView, UIScrollViewDelegate
         relationshipCreationMode = false
     }
     
-    func longPressHandler(_ recognizer: UILongPressGestureRecognizer)
+    @objc func longPressHandler(_ recognizer: UILongPressGestureRecognizer)
     {
         if let nodeDelegate = nodeDelegate , recognizer.state == .began
         {
@@ -208,7 +208,7 @@ class SNView: UIScrollView, UIScrollViewDelegate
         
         for node in nodes
         {
-            createWidgetForNode(node)
+            _ = createWidgetForNode(node)
         }
         
         renderRelationships()
@@ -228,7 +228,7 @@ class SNView: UIScrollView, UIScrollViewDelegate
             
             nodesContainer.addSubview(widget)
             
-            nodesContainer.bringSubview(toFront: widget)
+            nodesContainer.bringSubviewToFront(widget)
             
             return widget
         }
